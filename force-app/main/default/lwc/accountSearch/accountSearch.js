@@ -29,14 +29,12 @@ export default class AccountSearch extends LightningElement {
     handleAccount(event) {
         this.strSearchAcc = event.detail.value;
     }
-
     handleSearch() {
         if(!this.strSearchAcc) {
             this.errorMsg = 'Please enter account name to search.';
             this.searchData = undefined;
             return;
         }
-
         retriveRecords({strAcc : this.strSearchAcc})
         .then(result => {
             this.searchData = result;
