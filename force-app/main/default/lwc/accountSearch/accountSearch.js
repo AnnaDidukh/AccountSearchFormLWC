@@ -1,8 +1,7 @@
 import { LightningElement, track } from 'lwc';
 import retriveRecords from '@salesforce/apex/AccountController.retriveRecords';
 // datatable columns
-const columns = [
-    {
+const columns = [{
         label: 'Name',
         fieldName: 'Name',
         type: 'text'
@@ -18,14 +17,12 @@ const columns = [
         label: 'Type',
         fieldName: 'Type',
         type: 'text'
-    },
-];
+    },];
 export default class AccountSearch extends LightningElement {
     @track searchData;
     @track columns = columns;
     @track errorMsg = '';
-    strSearchAcc = '';
-    
+    strSearchAcc = ''; 
     handleAccount(event) {
         this.strSearchAcc = event.detail.value;
     }
@@ -38,7 +35,6 @@ export default class AccountSearch extends LightningElement {
         retriveRecords({strAcc : this.strSearchAcc})
         .then(result => {
             this.searchData = result;
-            
         })
         .catch(error => {
             this.searchData = undefined;
